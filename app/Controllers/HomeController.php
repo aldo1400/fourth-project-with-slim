@@ -1,5 +1,6 @@
 <?php 
 namespace App\Controllers;
+// Esta linea no es necesaria por el uso de Base COntroller
 use Slim\Views\Twig as View;
 
 class HomeController extends Controller
