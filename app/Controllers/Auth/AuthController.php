@@ -20,6 +20,10 @@ class AuthController extends Controller
             'password'=>v::noWhiteSpace()->notEmpty(),
         ]);
 
+        // para recuperar los datos del formulario , que luego se usar en OldInputMiddleware
+        
+$_SESSION['old']=$request->getParams();
+
     if($validation->failed()){
         return $response->withRedirect($this->router->pathFor('auth.signup'));
     }
