@@ -7,17 +7,20 @@ use Respect\Validation\Exceptions\NestedValidationException;
 
 class Validator{
 
-    protected $errors;
+    protected $errors=array();
     public function validate($request, array $rules){
-
+        foreach($rules as $field=>$rule){
         try{
-            foreach($rules as $field=>$rule){
+            
                 $rule->setName(ucfirst($field))->assert($request->getParam($field)); 
-             }
+             
         }catch(NestedValidationException $e){
             $this->errors[$field]=$e->getMessages();
         }
-        
+    }
+
+        $_SESSION['errors']=$this->errors;
+       
         return $this;
     }
 
