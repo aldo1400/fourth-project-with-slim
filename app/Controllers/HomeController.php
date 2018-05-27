@@ -7,7 +7,6 @@ use App\Models\User;
 class HomeController extends Controller
 {
    
-
     public function index($request,$response){
 
     //    var_dump($request->getParam('name')); Obtener parametros de un get  ?name
