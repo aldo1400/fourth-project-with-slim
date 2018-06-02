@@ -9,6 +9,9 @@ class AuthController extends Controller
 {
    
     public function getSignUp($request,$response){
+        
+        var_dump($request->getAttribute('csrf_value'));
+
         return $this->view->render($response,'auth/signup.twig');
     }
 
