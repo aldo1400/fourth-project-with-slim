@@ -15,14 +15,13 @@ class AuthController extends Controller
     public function  postSignUp($request,$response){
         
         $validation=$this->validator->validate($request,[
-            'email'=>v::noWhiteSpace()->notEmpty()->email(),
+            'email'=>v::noWhiteSpace()->notEmpty()->email()->emailAvailable(),
             'name'=>v::notEmpty()->alpha(),
             'password'=>v::noWhiteSpace()->notEmpty(),
         ]);
 
         // para recuperar los datos del formulario , que luego se usar en OldInputMiddleware
-        
-$_SESSION['old']=$request->getParams();
+// $_SESSION['old']=$request->getParams();
 
     if($validation->failed()){
         return $response->withRedirect($this->router->pathFor('auth.signup'));
