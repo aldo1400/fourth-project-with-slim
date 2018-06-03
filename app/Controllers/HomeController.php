@@ -10,11 +10,14 @@ class HomeController extends Controller
     public function index($request,$response){
 
     //    var_dump($request->getParam('name')); Obtener parametros de un get  ?name
-    User::create([
-        'name'=>'Alex Garret',
-        'email'=>'billy@codecourse',
-        'password'=>'123',
-    ]);
+    // User::create([
+    //     'name'=>'Alex Garret',
+    //     'email'=>'billy@codecourse',
+    //     'password'=>'123',
+    // ]);
+    // Añdi mensaje con flash
+        $this->flash->addMessage('info','Test Flash message');
+   
     return $this->view->render($response,'home.twig');
     }
 
