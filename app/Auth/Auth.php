@@ -5,7 +5,13 @@ use App\Models\User;
 class Auth{
     
     public function user(){
-        return User::find($_SESSION['user']);
+
+        if (isset($_SESSION['user'])) {
+            return User::find($_SESSION['user']);
+          }
+          return false;
+
+        
     }
     public function check(){
         return isset($_SESSION['user']);
@@ -32,5 +38,9 @@ class Auth{
         // colocar los datos del usuario logeado en variables de sesion
 
 
+    }
+
+    public function logout(){
+        unset($_SESSION['user']);
     }
 }
