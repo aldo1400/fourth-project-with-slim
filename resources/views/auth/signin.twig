@@ -5,12 +5,12 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-3">
             <div class="panel panel-default">
-            <div class="panel-heading">Sign up </div>
+            <div class="panel-heading">Sign in </div>
                 <div class="panel-body">
 
                {# {{errors | json_encode}} #}
 
-                    <form action="{{ path_for('auth.signup') }}" method="post" autocomplete="off" >
+                    <form action="{{ path_for('auth.signin') }}" method="post" autocomplete="off" >
                         <div class="form-group {{ errors.email ? 'has-error':''}}">
                             <label for="email">Email</label>
                             <input type="email" name="email" id="email" placeholder="you@domain.com" class="form-control" value="{{ old.email }}">
@@ -20,14 +20,7 @@
                             {% endif %}
                         </div>
 
-                        <div class="form-group {{ errors.name ? 'has-error':''}}">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name"  class="form-control" value="{{ old.name }}">
-                        
-                        {% if errors.name %}
-                            <span class="help-block">{{errors.name | first}}</span>
-                            {% endif %}
-                        </div>
+                       
 
                          <div class="form-group {{ errors.password ? 'has-error':''}}">
                             <label for="password">Password</label>
@@ -38,7 +31,7 @@
                             {% endif %}
                             
                         </div>
-                        <button type="submit" class="btn btn-default" >Sign up</button>
+                        <button type="submit" class="btn btn-default" >Sign in</button>
                             {# En esta variable global de twig se encuentra el token de seguridad  de CSRF #}
                         {{csrf.field | raw}}
                         
